@@ -11,6 +11,7 @@ import PieChartProgress from './components/Navbar3/PieChart';
 import BatchList from './components/Navbar3/BatchList';
 import PhoneList from './components/PhoneManager/PhoneList';
 import GlassCard from './components/UI/GlassCard';
+import { cn } from '@/lib/utils';
 
 type TabType = 'upload' | 'komreg' | 'distribute' | 'phones';
 

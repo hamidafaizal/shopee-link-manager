@@ -1,6 +1,7 @@
-// ========== API: PHONE BY ID (app/api/phones/[id]/route.ts) ==========
+// app/api/phones/[id]/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import pool from '@/lib/db';
+import { ResultSetHeader } from 'mysql2';
 
 export async function PUT(
   request: NextRequest,
@@ -9,7 +10,7 @@ export async function PUT(
   try {
     const { name, whatsapp_number } = await request.json();
     
-    await pool.execute(
+    await pool.execute<ResultSetHeader>(
       'UPDATE phones SET name = ?, whatsapp_number = ? WHERE id = ?',
       [name, whatsapp_number, params.id]
     );
@@ -26,7 +27,7 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   try {
-    await pool.execute('DELETE FROM phones WHERE id = ?', [params.id]);
+    await pool.execute<ResultSetHeader>('DELETE FROM phones WHERE id = ?', [params.id]);
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Error deleting phone:', error);

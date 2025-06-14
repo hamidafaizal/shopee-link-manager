@@ -1,4 +1,4 @@
-// ========== NAVBAR 1: UPLOAD CSV (app/components/Navbar1/UploadCSV.tsx) ==========
+// components/Navbar1/UploadCSV.tsx
 'use client';
 
 import { useState, useCallback } from 'react';
@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import toast from 'react-hot-toast';
 import GlassCard from '../UI/GlassCard';
 import AnimatedButton from '../UI/AnimatedButton';
+import { cn } from '@/lib/utils';
 
 interface CSVData {
   productLink: string;
@@ -161,7 +162,7 @@ export default function UploadCSV({ onDataProcessed }: { onDataProcessed: (data:
   );
 }
 
-// Helper functions (should be imported from utils)
+// Helper functions
 function shuffleArray<T>(array: T[]): T[] {
   const shuffled = [...array];
   for (let i = shuffled.length - 1; i > 0; i--) {
